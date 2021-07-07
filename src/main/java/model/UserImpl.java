@@ -1,8 +1,5 @@
 package model;
 
-/**
- * Created by Artsiom Prokharau 02.07.2021
- */
 
 public class UserImpl implements User {
 
@@ -51,10 +48,9 @@ public class UserImpl implements User {
 
     @Override
     public String toString() {
-        return "UserImpl{" +
+        return "UserImpl: " +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+                ", email='" + email + '\'';
     }
 }

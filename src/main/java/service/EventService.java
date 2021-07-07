@@ -9,9 +9,6 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Artsiom Prokharau 02.07.2021
- */
 
 @Service
 public class EventService {
@@ -44,5 +41,9 @@ public class EventService {
 
     public boolean deleteEvent(long eventId) {
         return eventDao.deleteEvent(eventId);
+    }
+
+    public List<Event> deleteAllEvents() {
+        return eventDao.deleteAllEvents();
     }
 }

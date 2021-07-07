@@ -7,9 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by Artsiom Prokharau 02.07.2021
- */
+
 
 @Repository
 public class EventDao {
@@ -44,8 +42,22 @@ public class EventDao {
     }
 
     public boolean deleteEvent(long eventId) {
-        Event event = events.get((int) eventId);
-        return events.remove(event);
+        for (Event e : events) {
+            if(e.getId()==eventId){
+                return events.remove(e);
+            }
+        }
+       return false;
+    }
+
+    public List<Event> deleteAllEvents() {
+        for (int i = events.size(); i>=0 ; i--) {
+            if(events.isEmpty()){
+                return events;
+            }
+            events.remove(events.get(i-1));
+        }
+        return events;
     }
 
     public int sizeEvent() {

@@ -11,9 +11,6 @@ import service.UserService;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Artsiom Prokharau 02.07.2021
- */
 
 public class BookingFacadeImpl implements BookingFacade {
 
@@ -105,5 +102,9 @@ public class BookingFacadeImpl implements BookingFacade {
     @Override
     public boolean cancelTicket(long ticketId) {
         return ticketService.cancelTicket(ticketId);
+    }
+
+    public List<Event> deleteAllEvents() {
+        return eventService.deleteAllEvents();
     }
 }

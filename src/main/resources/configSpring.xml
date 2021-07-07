@@ -6,7 +6,8 @@
         xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans.xsd
                         http://www.springframework.org/schema/context
-                        https://www.springframework.org/schema/context/spring-context.xsd">
+                        https://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/p ">
 
     <context:component-scan base-package="dao,service,facade"/>
     <context:property-placeholder location="classpath:event.properties,ticket.properties,user.properties"/>
@@ -22,6 +23,10 @@
 
     <bean id="userDao" class="dao.UserDao">
         <constructor-arg index="0" ref="users"/>
+    </bean>
+
+    <bean id="ticketDao" class="dao.TicketDao">
+
     </bean>
 
     <!--  SERVICE   -->
@@ -43,5 +48,8 @@
         <constructor-arg index="1" ref="ticketService"/>
         <constructor-arg index="2" ref="userService"/>
     </bean>
+
+<!--      POST PROCESSOR-->
+    <bean class="BeanPostProcessorImpl"/>
 
 </beans>

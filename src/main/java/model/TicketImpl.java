@@ -1,8 +1,5 @@
 package model;
 
-/**
- * Created by Artsiom Prokharau 02.07.2021
- */
 
 public class TicketImpl implements Ticket {
 
@@ -70,12 +67,11 @@ public class TicketImpl implements Ticket {
 
     @Override
     public String toString() {
-        return "TicketImpl{" +
+        return "TicketImpl: " +
                 "id=" + id +
                 ", eventId=" + eventId +
                 ", userId=" + userId +
                 ", category=" + category +
-                ", place=" + place +
-                '}';
+                ", place=" + place;
     }
 }

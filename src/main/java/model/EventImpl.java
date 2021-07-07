@@ -1,11 +1,9 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by Artsiom Prokharau 02.07.2021
- */
 
 public class EventImpl implements Event {
 
@@ -51,6 +49,7 @@ public class EventImpl implements Event {
         this.date = date;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -66,12 +65,14 @@ public class EventImpl implements Event {
         return Objects.hash(getId(), getTitle(), getDate());
     }
 
+
+
+
     @Override
     public String toString() {
-        return "EventImpl{" +
+        return "EventImpl: " +
                 "Id=" + Id +
                 ", title='" + title + '\'' +
-                ", date=" + date +
-                '}';
+                ", date=" + date;
     }
 }

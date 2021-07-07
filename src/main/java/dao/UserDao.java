@@ -1,5 +1,6 @@
 package dao;
 
+import model.Event;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -7,9 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by Artsiom Prokharau 02.07.2021
- */
+
 
 @Repository
 public class UserDao {
@@ -21,11 +20,11 @@ public class UserDao {
     }
 
     public User getUserById(long userId) {
-        return null;
+        return users.stream().filter(o -> o.getId()==userId).findAny().get();
     }
 
     public User getUserByEmail(String email) {
-        return null;
+        return users.stream().filter(o -> o.getEmail()==email).findAny().get();
     }
 
     public List<User> getUsersByName(String name, int pageSize, int pageNum) {
@@ -33,14 +32,22 @@ public class UserDao {
     }
 
     public User createUser(User user) {
-        return null;
+        users.add(user);
+        return user;
     }
 
     public User updateUser(User user) {
-        return null;
+        users.remove(users.stream().filter(o -> o.getId()==user.getId()).collect(Collectors.toList()).get(0));
+        users.add(user);
+        return users.get((int) user.getId());
     }
 
+
     public boolean deleteUser(long userId) {
-        return false;
+        User user=users.get((int) userId);
+        return users.remove(user);
+    }
+    public int sizeUsers() {
+        return users.size();
     }
 }

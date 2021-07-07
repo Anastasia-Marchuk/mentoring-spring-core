@@ -11,9 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-/**
- * Created by Artsiom Prokharau 02.07.2021
- */
 
 @Repository
 public class TicketDao {
@@ -23,9 +20,9 @@ public class TicketDao {
 
     public Ticket bookTicket(long userId, long eventId, int place, Ticket.Category category) {
         TicketImpl ticket = new TicketImpl(eventId, userId, category, place);
-        ticket.setId(4);
-        tickets.put("tickets: " + ticket.getId(), ticket);
-        System.out.println(tickets);
+        long newId=tickets.size()+1;
+        ticket.setId(newId);
+        tickets.put("ticket" + ticket.getId(), ticket);
         return ticket;
     }
 
@@ -35,10 +32,11 @@ public class TicketDao {
     }
 
     public List<Ticket> getBookedTickets(Event event, int pageSize, int pageNum) {
-        return null;
+        long id=event.getId();
+        return tickets.values().stream().filter(o -> o.getEventId() == id).collect(Collectors.toList());
     }
 
     public boolean cancelTicket(long ticketId) {
-        return false;
+        return tickets.keySet().removeIf(key -> key.equals("ticket" +ticketId));
     }
 }
