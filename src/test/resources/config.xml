@@ -7,7 +7,7 @@
 
     <util:list id="list" list-class="java.util.ArrayList"/>
 
-    <bean id="eventDao" class="dao.EventDao">
+    <bean id="eventDao" class="com.mentoring.amarchuk.dao.EventDao">
         <constructor-arg ref="list"/>
     </bean>
 

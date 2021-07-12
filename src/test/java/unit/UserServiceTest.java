@@ -1,14 +1,12 @@
 package unit;
 
-import dao.UserDao;
-import model.User;
-import model.UserImpl;
+import com.mentoring.amarchuk.dao.UserDaoListDBImpl;
+import com.mentoring.amarchuk.model.User;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.BeforeClass;
-import service.UserService;
+import com.mentoring.amarchuk.service.UserService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,7 +18,7 @@ import java.util.List;
 public class UserServiceTest {
 
     UserService userService = mock(UserService.class);
-    UserDao userDao=mock(UserDao.class);
+    UserDaoListDBImpl userDaoListDBImpl =mock(UserDaoListDBImpl.class);
 
     private static User testUser;
     private static List<User> listUsers=new ArrayList<>();;
@@ -31,14 +29,14 @@ public class UserServiceTest {
     @Before
     public void init() {
         logger.info("Adding test user to list ");
-        testUser =  new UserImpl(1, "Stacy", "stacy@gmail.com");
+        testUser =  new User(1, "Stacy", "stacy@gmail.com");
         listUsers.add(testUser);
 
     }
 
     @Test
     public void testCreateUser() {
-        User user = new UserImpl(1, "Stacy", "stacy@gmail.com");
+        User user = new User(1, "Stacy", "stacy@gmail.com");
         when(userService.createUser(user)).thenReturn(user);
         assertEquals(user, user);
     }
@@ -46,7 +44,7 @@ public class UserServiceTest {
     @Test
     public void testGetUserByName() {
         List <User> list=new ArrayList<>();
-        User user1 = new UserImpl(1, "Stacy Marchuk", "stacy@gmail.com");
+        User user1 = new User(1, "Stacy Marchuk", "stacy@gmail.com");
         list.add(user1);
         listUsers.add(user1);
 
@@ -58,8 +56,8 @@ public class UserServiceTest {
     @Test
     public void testDeleteUser() {
 
-        User user1 = new UserImpl(1, "Stacy", "stacy@gmail.com");
-        User user2 = new UserImpl(1, "Michail", "stacy@gmail.com");
+        User user1 = new User(1, "Stacy", "stacy@gmail.com");
+        User user2 = new User(1, "Michail", "stacy@gmail.com");
 
         listUsers.add(user1);
         listUsers.add(user2);
@@ -71,11 +69,11 @@ public class UserServiceTest {
     @Test
     public void updateTest() {
 
-        when(userDao.getUserById(1)).thenReturn(testUser);
-        assertEquals(testUser,userDao.getUserById(1));
+        when(userDaoListDBImpl.getUserById(1)).thenReturn(testUser);
+        assertEquals(testUser, userDaoListDBImpl.getUserById(1));
 
-        User userForUpdate =  new UserImpl(1, "UpdatedStacy", "stacy@gmail.com");
-        testUser =  new UserImpl(1, "Stacy", "stacy@gmail.com");
+        User userForUpdate =  new User(1, "UpdatedStacy", "stacy@gmail.com");
+        testUser =  new User(1, "Stacy", "stacy@gmail.com");
         testUser.setName("UpdatedStacy");
 
         when(userService.updateUser(userForUpdate)).thenReturn(testUser);

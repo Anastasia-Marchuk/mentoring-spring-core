@@ -1,9 +1,10 @@
-package facade;
+package com.mentoring.amarchuk.facade;
 
 
-import model.Event;
-import model.Ticket;
-import model.User;
+import com.mentoring.amarchuk.model.Category;
+import com.mentoring.amarchuk.model.Event;
+import com.mentoring.amarchuk.model.Ticket;
+import com.mentoring.amarchuk.model.User;
 
 import java.util.Date;
 import java.util.List;
@@ -113,7 +114,7 @@ public interface BookingFacade {
      * @return Booked ticket object.
      * @throws java.lang.IllegalStateException if this place has already been booked.
      */
-    Ticket bookTicket(long userId, long eventId, int place, Ticket.Category category);
+    Ticket bookTicket(long userId, long eventId, int place, Category category);
 
     /**
      * Get all booked tickets for specified user. Tickets should be sorted by event date in descending order.

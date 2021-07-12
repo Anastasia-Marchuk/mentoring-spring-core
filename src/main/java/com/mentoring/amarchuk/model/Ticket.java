@@ -1,7 +1,7 @@
-package model;
+package com.mentoring.amarchuk.model;
 
 
-public class TicketImpl implements Ticket {
+public class Ticket {
 
     private Long id;
     private Long eventId;
@@ -9,17 +9,16 @@ public class TicketImpl implements Ticket {
     private Category category;
     private Integer place;
 
-    public TicketImpl() {
+    public Ticket() {
     }
 
-    public TicketImpl(Long eventId, Long userId, Category category, Integer place) {
+    public Ticket(Long eventId, Long userId, Category category, Integer place) {
         this.eventId = eventId;
         this.userId = userId;
         this.category = category;
         this.place = place;
     }
 
-    @Override
     public long getId() {
         return id;
     }
@@ -28,7 +27,6 @@ public class TicketImpl implements Ticket {
         this.id = id;
     }
 
-    @Override
     public long getEventId() {
         return eventId;
     }
@@ -37,7 +35,6 @@ public class TicketImpl implements Ticket {
         this.eventId = eventId;
     }
 
-    @Override
     public long getUserId() {
         return userId;
     }
@@ -46,17 +43,14 @@ public class TicketImpl implements Ticket {
         this.userId = userId;
     }
 
-    @Override
     public Category getCategory() {
         return category;
     }
 
-    @Override
     public void setCategory(Category category) {
         this.category = category;
     }
 
-    @Override
     public int getPlace() {
         return place;
     }
@@ -65,7 +59,6 @@ public class TicketImpl implements Ticket {
         this.place = place;
     }
 
-    @Override
     public String toString() {
         return "TicketImpl: " +
                 "id=" + id +

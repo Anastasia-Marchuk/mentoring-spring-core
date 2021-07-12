@@ -1,12 +1,13 @@
-package facade;
+package com.mentoring.amarchuk.facade;
 
 
-import model.Event;
-import model.Ticket;
-import model.User;
-import service.EventService;
-import service.TicketService;
-import service.UserService;
+import com.mentoring.amarchuk.model.Category;
+import com.mentoring.amarchuk.model.Event;
+import com.mentoring.amarchuk.model.Ticket;
+import com.mentoring.amarchuk.model.User;
+import com.mentoring.amarchuk.service.EventService;
+import com.mentoring.amarchuk.service.TicketDBService;
+import com.mentoring.amarchuk.service.UserService;
 
 import java.util.Date;
 import java.util.List;
@@ -15,12 +16,12 @@ import java.util.List;
 public class BookingFacadeImpl implements BookingFacade {
 
     private EventService eventService;
-    private TicketService ticketService;
+    private TicketDBService ticketDBService;
     private UserService userService;
 
-    public BookingFacadeImpl(EventService eventService, TicketService ticketService, UserService userService) {
+    public BookingFacadeImpl(EventService eventService, TicketDBService ticketDBService, UserService userService) {
         this.eventService = eventService;
-        this.ticketService = ticketService;
+        this.ticketDBService = ticketDBService;
         this.userService = userService;
     }
 
@@ -84,24 +85,25 @@ public class BookingFacadeImpl implements BookingFacade {
         return userService.deleteUser(userId);
     }
 
+
     @Override
-    public Ticket bookTicket(long userId, long eventId, int place, Ticket.Category category) {
-        return ticketService.bookTicket(userId,eventId,place,category);
+    public Ticket bookTicket(long userId, long eventId, int place, Category category) {
+        return ticketDBService.bookTicket(userId,eventId,place,category);
     }
 
     @Override
     public List<Ticket> getBookedTickets(User user, int pageSize, int pageNum) {
-        return ticketService.getBookedTickets(user,pageSize,pageNum);
+        return ticketDBService.getBookedTickets(user,pageSize,pageNum);
     }
 
     @Override
     public List<Ticket> getBookedTickets(Event event, int pageSize, int pageNum) {
-        return ticketService.getBookedTickets(event,pageSize,pageNum);
+        return ticketDBService.getBookedTickets(event,pageSize,pageNum);
     }
 
     @Override
     public boolean cancelTicket(long ticketId) {
-        return ticketService.cancelTicket(ticketId);
+        return ticketDBService.cancelTicket(ticketId);
     }
 
     public List<Event> deleteAllEvents() {

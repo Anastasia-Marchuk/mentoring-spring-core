@@ -1,18 +1,14 @@
 package unit;
 
-import model.Event;
-import model.EventImpl;
-import model.Ticket;
-import model.TicketImpl;
+import com.mentoring.amarchuk.model.Category;
+import com.mentoring.amarchuk.model.Ticket;
 import org.junit.jupiter.api.Test;
-
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TicketTest {
 
-        Ticket ticket=new TicketImpl((long)999, (long)1, Ticket.Category.PREMIUM,5);
+        Ticket ticket=new Ticket((long)999, (long)1, Category.PREMIUM,5);
 
         @Test
         public void testGetEventId(){
@@ -31,6 +27,6 @@ public class TicketTest {
 
         @Test
         public void testGetCategory(){
-            assertEquals(Ticket.Category.PREMIUM,ticket.getCategory());
+            assertEquals(Category.PREMIUM,ticket.getCategory());
         }
 }

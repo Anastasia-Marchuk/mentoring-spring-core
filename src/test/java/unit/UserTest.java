@@ -1,14 +1,13 @@
 package unit;
 
-import model.User;
-import model.UserImpl;
+import com.mentoring.amarchuk.model.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserTest {
 
-    User user=new UserImpl(1,"Stacy","stacy@gmail.com");
+    User user=new User(1,"Stacy","stacy@gmail.com");
 
     @Test
     public void testGetNameUser(){

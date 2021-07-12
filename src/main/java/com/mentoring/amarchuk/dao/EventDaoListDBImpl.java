@@ -1,20 +1,20 @@
-package dao;
+package com.mentoring.amarchuk.dao;
 
-import model.Event;
+import com.mentoring.amarchuk.model.Event;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-
 @Repository
-public class EventDao {
+public class EventDaoListDBImpl implements EventDao{
 
+   @Autowired
     private List<Event> events;
 
-    public EventDao(List<Event> events) {
+    public EventDaoListDBImpl(List<Event> events) {
         this.events = events;
     }
 
@@ -47,7 +47,7 @@ public class EventDao {
                 return events.remove(e);
             }
         }
-       return false;
+        return false;
     }
 
     public List<Event> deleteAllEvents() {
@@ -63,5 +63,4 @@ public class EventDao {
     public int sizeEvent() {
         return events.size();
     }
-
 }

@@ -1,9 +1,7 @@
 package unit;
 
-import model.Event;
-import model.EventImpl;
-import model.User;
-import model.UserImpl;
+import com.mentoring.amarchuk.model.Event;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -12,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EventTest {
     Date date=new Date();
-   Event event=new EventImpl((long) 959595,"Title",date);
+   Event event=new Event((long) 959595,"Title",date);
 
     @Test
     public void testGetTitle(){

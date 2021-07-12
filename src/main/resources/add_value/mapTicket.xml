@@ -10,8 +10,7 @@
 
 
     <!--  Put value in Map  Ticket-->
-
-    <bean id="ticket1" class="model.TicketImpl">
+    <bean id="ticket1" class="com.mentoring.amarchuk.model.Ticket">
         <property name="id" value="${ticket1.id}"/>
         <property name="eventId" value="${ticket1.eventId}"/>
         <property name="userId" value="${ticket1.userId}"/>
@@ -19,7 +18,7 @@
         <property name="place" value="${ticket1.place}"/>
     </bean>
 
-    <bean id="ticket2" class="model.TicketImpl">
+    <bean id="ticket2" class="com.mentoring.amarchuk.model.Ticket">
         <property name="id" value="${ticket2.id}"/>
         <property name="eventId" value="${ticket2.eventId}"/>
         <property name="userId" value="${ticket2.userId}"/>
@@ -27,7 +26,7 @@
         <property name="place" value="${ticket2.place}"/>
     </bean>
 
-    <bean id="ticket3" class="model.TicketImpl">
+    <bean id="ticket3" class="com.mentoring.amarchuk.model.Ticket">
         <property name="id" value="${ticket3.id}"/>
         <property name="eventId" value="${ticket3.eventId}"/>
         <property name="userId" value="${ticket3.userId}"/>
@@ -40,5 +39,6 @@
         <entry key="ticket: 2" value-ref="ticket2"/>
         <entry key="ticket: 3" value-ref="ticket3"/>
     </util:map>
+
 
 </beans>

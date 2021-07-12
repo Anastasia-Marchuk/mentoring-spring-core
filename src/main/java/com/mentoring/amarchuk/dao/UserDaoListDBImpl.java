@@ -1,21 +1,19 @@
-package dao;
+package com.mentoring.amarchuk.dao;
 
-import model.Event;
-import model.User;
+import com.mentoring.amarchuk.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 
-
 @Repository
-public class UserDao {
+public class UserDaoListDBImpl implements UserDao {
 
+    @Autowired
     private final List<User> users;
 
-    public UserDao(List<User> users) {
+    public UserDaoListDBImpl(List<User> users) {
         this.users = users;
     }
 

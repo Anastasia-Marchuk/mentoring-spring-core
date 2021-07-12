@@ -1,4 +1,4 @@
-package model;
+package com.mentoring.amarchuk.model;
 
 
 public enum Category {

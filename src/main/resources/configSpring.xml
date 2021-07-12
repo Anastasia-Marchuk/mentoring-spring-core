@@ -2,54 +2,42 @@
 <beans
         xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.w3.org/1999/xhtml"
         xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans.xsd
                         http://www.springframework.org/schema/context
                         https://www.springframework.org/schema/context/spring-context.xsd
 http://www.springframework.org/schema/p ">
 
-    <context:component-scan base-package="dao,service,facade"/>
+    <context:component-scan base-package="com.mentoring.amarchuk"/>
+
     <context:property-placeholder location="classpath:event.properties,ticket.properties,user.properties"/>
     <import resource="classpath:add_value/listEvent.xml"/>
     <import resource="classpath:add_value/mapTicket.xml"/>
     <import resource="classpath:add_value/listUser.xml"/>
 
 
-    <!--  DAO   -->
-    <bean id="eventDao" class="dao.EventDao">
-        <constructor-arg index="0" ref="events"/>
-    </bean>
-
-    <bean id="userDao" class="dao.UserDao">
-        <constructor-arg index="0" ref="users"/>
-    </bean>
-
-    <bean id="ticketDao" class="dao.TicketDao">
-
-    </bean>
-
     <!--  SERVICE   -->
 
-    <bean id="eventService" class="service.EventService">
-        <constructor-arg index="0" ref="eventDao"/>
+    <bean id="eventDBService" class="com.mentoring.amarchuk.service.EventDBService">
+        <constructor-arg index="0" ref="eventDaoListDBImpl"/>
     </bean>
-    <bean id="ticketService" class="service.TicketService">
-        <constructor-arg index="0" ref="ticketDao"/>
+    <bean id="ticketDBService" class="com.mentoring.amarchuk.service.TicketDBService">
+        <constructor-arg index="0" ref="ticketDaoListDBImpl"/>
     </bean>
-    <bean id="userService" class="service.UserService">
-        <constructor-arg index="0" ref="userDao"/>
+    <bean id="userDBService" class="com.mentoring.amarchuk.service.UserDBService">
+        <constructor-arg index="0" ref="userDaoListDBImpl"/>
     </bean>
 
     <!--  FACADE  -->
 
-    <bean id="facadeImpl" class="facade.BookingFacadeImpl">
-        <constructor-arg index="0" ref="eventService"/>
-        <constructor-arg index="1" ref="ticketService"/>
-        <constructor-arg index="2" ref="userService"/>
+    <bean id="facadeImpl" class="com.mentoring.amarchuk.facade.BookingFacadeImpl">
+        <constructor-arg index="0" ref="eventDBService"/>
+        <constructor-arg index="1" ref="ticketDBService"/>
+        <constructor-arg index="2" ref="userDBService"/>
     </bean>
 
 <!--      POST PROCESSOR-->
-    <bean class="BeanPostProcessorImpl"/>
+    <bean class="com.mentoring.amarchuk.BeanPostProcessorImpl"/>
 
 </beans>

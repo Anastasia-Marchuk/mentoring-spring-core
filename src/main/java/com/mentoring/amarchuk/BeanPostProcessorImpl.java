@@ -1,3 +1,5 @@
+package com.mentoring.amarchuk;
+
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 

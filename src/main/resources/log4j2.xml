@@ -27,7 +27,7 @@
     </Loggers>
 
     <Loggers>
-        <Logger name="AppSpring" level="trace" additivity="false">
+        <Logger name="com.mentoring.amarchuk.AppSpring" level="trace" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="rollingFile" />
         </Logger>

@@ -1,8 +1,7 @@
-package dao;
+package com.mentoring.amarchuk.dao;
 
 
-import model.User;
-import model.UserImpl;
+import com.mentoring.amarchuk.model.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
@@ -19,25 +18,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"classpath:config.xml"})
-class UserDaoTest {
+class UserDaoListDBImplTest {
 
     @Autowired
-    private UserDao userDao;
+    private UserDaoListDBImpl userDaoListDBImpl;
 
     List<User> users = new ArrayList<>();
-    private static Logger logger = LoggerFactory.getLogger(UserDaoTest.class);
+    private static Logger logger = LoggerFactory.getLogger(UserDaoListDBImplTest.class);
 
     @Test
     void createUser() {
-        User user=new UserImpl(1,"Stacy","stacy@gmail.com");
-        userDao.createUser(user);
+        User user=new User(1,"newStacy","new_stacy@gmail.com");
+        userDaoListDBImpl.createUser(user);
        // assertEquals(user.getName(),userDao.getUsersByName("Stacy",1,1));
-        assertEquals(1,userDao.sizeUsers());
-//        Event event = new EventImpl((long) 1, "Test", new Date("12/12/2012"));
-//        assertEquals(0,eventDao.sizeEvent());
-//        logger.info("TEST create event "+event.getTitle());
-//        eventDao.createEvent(event);
-//        assertEquals(1,eventDao.sizeEvent());
+        assertEquals(1, userDaoListDBImpl.sizeUsers());
+
     }
 
 
