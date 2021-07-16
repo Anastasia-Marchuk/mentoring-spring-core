@@ -7,9 +7,16 @@
 
     <util:list id="list" list-class="java.util.ArrayList"/>
 
-    <bean id="eventDao" class="com.mentoring.amarchuk.dao.EventDao">
-        <constructor-arg ref="list"/>
-    </bean>
+<!--    <bean id="eventDao" class="EventDaoListDBImpl">-->
+<!--        <constructor-arg ref="list"/>-->
+<!--    </bean>-->
 
+<!--    <bean id="userDao" class="UserDaoListDBImpl">-->
+<!--        <constructor-arg ref="list"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="ticketDao" class="TicketDaoListDBImpl">-->
+<!--        <constructor-arg ref="list"/>-->
+<!--    </bean>-->
 
 </beans>
